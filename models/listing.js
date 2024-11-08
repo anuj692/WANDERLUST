@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 // Remove the Review import from the top
 // const Review = require("./review");
 
-const listingSchema = new Schema({
+const listingSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
@@ -28,6 +28,10 @@ const listingSchema = new Schema({
       ref: "Review",
     },
   ],
+  owner:{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
 });
 
 // Middleware to delete associated reviews after listing deletion
